@@ -77,7 +77,7 @@
     pokenameForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
-      const pokename = formData.get("pokename");
+      const pokename = formData.get("pokename").toLowerCase();
       pokenameElement.value = "";
       addPokemonToList(pokename);
     });
