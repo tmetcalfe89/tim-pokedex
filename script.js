@@ -1,7 +1,6 @@
 (function () {
   const pokenameForm = document.getElementById("pokename");
-
-  const pokemonList = [];
+  const pokelist = document.getElementById("pokelist");
 
   async function getPokemonData(pokename) {
     try {
@@ -41,19 +40,40 @@
         return;
       }
 
-      pokemonList.push(data);
+      buildPokemonCard(data);
     } catch (error) {
       console.error(error);
     }
   }
 
+  function buildPokemonCard(data) {
+    const containerElement = document.createElement("div");
+
+    const nameElement = document.createElement("h1");
+    nameElement.textContent = data.name;
+    containerElement.appendChild(nameElement);
+
+    const imageElement = document.createElement("img");
+    imageElement.src = data.image;
+    containerElement.appendChild(imageElement);
+
+    const typeContainer = document.createElement("div");
+    for (let type of data.types) {
+      const typeElement = document.createElement("span");
+      typeElement.textContent = type;
+      typeContainer.appendChild(typeElement);
+    }
+    containerElement.appendChild(typeContainer);
+
+    pokelist.appendChild(containerElement);
+  }
+
   function addEventListeners() {
-    pokenameForm.addEventListener("submit", async (e) => {
+    pokenameForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const pokename = formData.get("pokename");
-      await addPokemonToList(pokename);
-      console.log(pokemonList);
+      addPokemonToList(pokename);
     });
   }
 
