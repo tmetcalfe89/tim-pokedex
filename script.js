@@ -1,5 +1,6 @@
 (function () {
   const pokenameForm = document.getElementById("pokename");
+  const pokenameElement = document.querySelector("#pokename input");
   const pokelist = document.getElementById("pokelist");
 
   function capitalizeWord(word) {
@@ -77,6 +78,7 @@
       e.preventDefault();
       const formData = new FormData(e.target);
       const pokename = formData.get("pokename");
+      pokenameElement.value = "";
       addPokemonToList(pokename);
     });
   }
