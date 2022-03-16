@@ -2,6 +2,10 @@
   const pokenameForm = document.getElementById("pokename");
   const pokelist = document.getElementById("pokelist");
 
+  function capitalizeWord(word) {
+    return word[0].toUpperCase() + word.slice(1);
+  }
+
   async function getPokemonData(pokename) {
     try {
       const response = await fetch(
@@ -11,11 +15,11 @@
         const pokedata = await response.json();
 
         const cleanedPokedata = {};
-        cleanedPokedata.name = pokedata.name;
+        cleanedPokedata.name = capitalizeWord(pokedata.name);
         cleanedPokedata.image = pokedata.sprites.front_default;
         cleanedPokedata.types = [];
         for (let typeData of pokedata.types) {
-          cleanedPokedata.types.push(typeData.type.name);
+          cleanedPokedata.types.push(capitalizeWord(typeData.type.name));
         }
         return cleanedPokedata;
       }
