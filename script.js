@@ -16,11 +16,11 @@
         const pokedata = await response.json();
 
         const cleanedPokedata = {};
-        cleanedPokedata.name = capitalizeWord(pokedata.name);
+        cleanedPokedata.name = pokedata.name;
         cleanedPokedata.image = pokedata.sprites.front_default;
         cleanedPokedata.types = [];
         for (let typeData of pokedata.types) {
-          cleanedPokedata.types.push(capitalizeWord(typeData.type.name));
+          cleanedPokedata.types.push(typeData.type.name);
         }
         return cleanedPokedata;
       }
@@ -53,9 +53,10 @@
 
   function buildPokemonCard(data) {
     const containerElement = document.createElement("div");
+    containerElement.classList.add("card");
 
     const nameElement = document.createElement("h1");
-    nameElement.textContent = data.name;
+    nameElement.textContent = capitalizeWord(data.name);
     containerElement.appendChild(nameElement);
 
     const imageElement = document.createElement("img");
@@ -63,9 +64,13 @@
     containerElement.appendChild(imageElement);
 
     const typeContainer = document.createElement("div");
+    typeContainer.classList.add("list");
+    typeContainer.classList.add("around");
     for (let type of data.types) {
       const typeElement = document.createElement("span");
-      typeElement.textContent = type;
+      typeElement.textContent = capitalizeWord(type);
+      typeElement.classList.add("pill");
+      typeElement.classList.add(type);
       typeContainer.appendChild(typeElement);
     }
     containerElement.appendChild(typeContainer);
