@@ -36,5 +36,5 @@ Users can type in an input box. When they press `Enter`, their input is submitte
 This project will cover its tasks using a handful of different methods and combinations. Below is a list of branches on this project, along with the methods they use:
 
 - main - There is no project here, just a README documenting the purpose of this repository.
-- stage1-vanilla - This is an HTML/CSS/JS implementation of Stage 1 of the project.
+- [stage1-vanilla](https://github.com/tmetcalfe89/tim-pokedex/tree/stage1-vanilla) - This is an HTML/CSS/JS implementation of Stage 1 of the project.
 - stage1-react - This is a React implementation of Stage 1 of the project.
