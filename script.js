@@ -37,17 +37,17 @@
       const data = await getPokemonData(pokename);
 
       if (data === null) {
-        console.log("Pokemon not found.");
+        alert("Pokemon not found.");
         return;
       }
       if (data.error) {
-        console.error(error);
+        alert(error);
         return;
       }
 
       buildPokemonCard(data);
     } catch (error) {
-      console.error(error);
+      alert(error);
     }
   }
 
