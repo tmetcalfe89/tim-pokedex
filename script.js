@@ -61,6 +61,8 @@
 
     const imageElement = document.createElement("img");
     imageElement.src = data.image;
+    imageElement.width = 150;
+    imageElement.height = 150;
     containerElement.appendChild(imageElement);
 
     const typeContainer = document.createElement("div");
