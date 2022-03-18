@@ -37,4 +37,4 @@ This project will cover its tasks using a handful of different methods and combi
 
 - main - There is no project here, just a README documenting the purpose of this repository.
 - [stage1-vanilla](https://github.com/tmetcalfe89/tim-pokedex/tree/stage1-vanilla) - This is an HTML/CSS/JS implementation of Stage 1 of the project.
-- stage1-react - This is a React implementation of Stage 1 of the project.
+- [stage1-react](https://github.com/tmetcalfe89/tim-pokedex/tree/stage1-react) - This is a React implementation of Stage 1 of the project.
