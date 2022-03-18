@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import PokemonCard from "./PokemonCard";
 
 function App() {
   const [pokename, setPokename] = useState("");
   const [pokemonList, setPokelist] = useState([]);
-
-  useEffect(() => {
-    console.log(pokemonList);
-  }, [pokemonList]);
 
   async function getPokemonData(pokename) {
     try {
@@ -56,7 +53,11 @@ function App() {
       <form onSubmit={handlePokenameSubmit}>
         <input value={pokename} onChange={handlePokenameUpdate} />
       </form>
-      <div></div> {/* This will become our pokelist. */}
+      <div>
+        {pokemonList.map((pokemonData) => (
+          <PokemonCard {...pokemonData} />
+        ))}
+      </div>
     </div>
   );
 }
