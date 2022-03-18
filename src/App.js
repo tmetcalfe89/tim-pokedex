@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PokemonCard from "./PokemonCard";
+import "./styles.css";
 
 function App() {
   const [pokename, setPokename] = useState("");
@@ -54,7 +55,7 @@ function App() {
       <form onSubmit={handlePokenameSubmit}>
         <input value={pokename} onChange={handlePokenameUpdate} />
       </form>
-      <div>
+      <div className="list">
         {pokemonList.map((pokemonData) => (
           <PokemonCard {...pokemonData} />
         ))}

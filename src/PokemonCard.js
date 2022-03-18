@@ -6,12 +6,12 @@ function capitalizeWord(word) {
 
 function PokemonCard({ name, image, types }) {
   return (
-    <div>
+    <div className="card">
       <h1>{capitalizeWord(name)}</h1>
       <img src={image} />
-      <div>
+      <div className="list around">
         {types.map((type) => (
-          <span>{capitalizeWord(type)}</span>
+          <span className={`pill ${type}`}>{capitalizeWord(type)}</span>
         ))}
       </div>
     </div>
