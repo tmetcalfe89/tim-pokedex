@@ -36,11 +36,11 @@ function App() {
     const data = await getPokemonData(pokename.toLowerCase());
     setPokename("");
     if (data === null) {
-      console.log("Pokemon not found.");
+      alert("Pokemon not found.");
       return;
     }
     if (data.error) {
-      console.error(data.error);
+      alert(data.error);
       return;
     }
     setPokelist([...pokemonList, data]);
