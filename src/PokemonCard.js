@@ -8,7 +8,7 @@ function PokemonCard({ name, image, types }) {
   return (
     <div className="card">
       <h1>{capitalizeWord(name)}</h1>
-      <img src={image} />
+      <img src={image} width="150" height="150" />
       <div className="list around">
         {types.map((type) => (
           <span className={`pill ${type}`}>{capitalizeWord(type)}</span>
