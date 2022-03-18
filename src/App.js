@@ -33,6 +33,7 @@ function App() {
   async function handlePokenameSubmit(e) {
     e.preventDefault();
     const data = await getPokemonData(pokename);
+    setPokename("");
     if (data === null) {
       console.log("Pokemon not found.");
       return;
