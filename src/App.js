@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   const [pokename, setPokename] = useState("");
+  const [pokemonList, setPokelist] = useState([]);
+
+  useEffect(() => {
+    console.log(pokemonList);
+  }, [pokemonList]);
 
   async function getPokemonData(pokename) {
     try {
@@ -10,7 +15,15 @@ function App() {
       );
       if (response.ok) {
         const pokedata = await response.json();
-        return pokedata;
+
+        const cleanedPokedata = {};
+        cleanedPokedata.name = pokedata.name;
+        cleanedPokedata.image = pokedata.sprites.front_default;
+        cleanedPokedata.types = [];
+        for (let typeData of pokedata.types) {
+          cleanedPokedata.types.push(typeData.type.name);
+        }
+        return cleanedPokedata;
       }
       return null;
     } catch (error) {
@@ -31,7 +44,7 @@ function App() {
       console.error(data.error);
       return;
     }
-    console.log(data);
+    setPokelist([...pokemonList, data]);
   }
 
   function handlePokenameUpdate(e) {
