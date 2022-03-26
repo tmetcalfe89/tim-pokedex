@@ -20,9 +20,19 @@ This project will cover:
 
 This project is currently available in one functional stage:
 
-## Basics
+## Stage 1
+
+_Lists and APIs_
 
 Users can type in an input box. When they press `Enter`, their input is submitted, and the `<input>`'s value is cleared. When input is submitted, we submit a request to the API. When the API responds, we clean the response body, and add the item to a list. When the list is changed, we render the changes to the page.
+
+## Stage 2
+
+**WIP**
+
+_Modifications_
+
+Builds on Stage 1. Users can click on a card's `Close` button to delete the entry. Users can click on a card's `Shiny` button to set the entry's shiny status to true, changing the image rendered to the shiny version for that entry.
 
 # Technologies
 
