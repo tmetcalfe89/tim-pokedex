@@ -47,35 +47,34 @@
 
       buildPokemonCard(data);
     } catch (error) {
+      console.error(error);
       alert(error);
     }
   }
 
+  function cloneTemplate(selector) {
+    const templateElement = document.querySelector(selector);
+    const newTemplate = templateElement.content.cloneNode(true);
+    return newTemplate;
+  }
+
   function buildPokemonCard(data) {
-    const containerElement = document.createElement("div");
-    containerElement.classList.add("card");
+    const containerElement = cloneTemplate("#cardTemplate");
 
-    const nameElement = document.createElement("h1");
+    const nameElement = containerElement.querySelector(".cardName");
     nameElement.textContent = capitalizeWord(data.name);
-    containerElement.appendChild(nameElement);
 
-    const imageElement = document.createElement("img");
+    const imageElement = containerElement.querySelector(".cardImage");
     imageElement.src = data.image;
-    imageElement.width = 150;
-    imageElement.height = 150;
-    containerElement.appendChild(imageElement);
 
-    const typeContainer = document.createElement("div");
-    typeContainer.classList.add("list");
-    typeContainer.classList.add("around");
+    const typeContainer = containerElement.querySelector(".cardTypes");
     for (let type of data.types) {
-      const typeElement = document.createElement("span");
-      typeElement.textContent = capitalizeWord(type);
-      typeElement.classList.add("pill");
-      typeElement.classList.add(type);
+      const typeElement = cloneTemplate("#typeTemplate");
+      const typeNameElement = typeElement.querySelector(".typeName");
+      typeNameElement.textContent = capitalizeWord(type);
+      typeNameElement.classList.add(type);
       typeContainer.appendChild(typeElement);
     }
-    containerElement.appendChild(typeContainer);
 
     pokelist.appendChild(containerElement);
   }

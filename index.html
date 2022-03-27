@@ -9,6 +9,17 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <template id="typeTemplate">
+      <span class="pill typeName"></span>
+    </template>
+    <template id="cardTemplate">
+      <div class="card">
+        <h1 class="cardName"></h1>
+        <img width="150" height="150" class="cardImage" />
+        <div class="list around cardTypes"></div>
+      </div>
+    </template>
+
     <form id="pokename">
       <input name="pokename" />
       <button>Catch 'em</button>
