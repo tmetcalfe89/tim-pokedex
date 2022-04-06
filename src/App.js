@@ -11,6 +11,14 @@ function App() {
     setPokelist(pokemonList.filter((pokeData) => pokeData.id !== id));
   }
 
+  function toggleShiny(id) {
+    setPokelist(
+      pokemonList.map((pokeData) =>
+        pokeData.id === id ? { ...pokeData, shiny: !pokeData.shiny } : pokeData
+      )
+    );
+  }
+
   async function getPokemonData(pokename) {
     try {
       const response = await fetch(
@@ -21,12 +29,17 @@ function App() {
 
         const cleanedPokedata = {};
         cleanedPokedata.name = pokedata.name;
-        cleanedPokedata.image = pokedata.sprites.front_default;
+        // cleanedPokedata.image = pokedata.sprites.front_default;
+        cleanedPokedata.images = {
+          default: pokedata.sprites.front_default,
+          shiny: pokedata.sprites.front_shiny,
+        };
         cleanedPokedata.types = [];
         for (let typeData of pokedata.types) {
           cleanedPokedata.types.push(typeData.type.name);
         }
         cleanedPokedata.id = uuid();
+        cleanedPokedata.shiny = false;
         return cleanedPokedata;
       }
       return null;
@@ -66,6 +79,7 @@ function App() {
           <PokemonCard
             {...pokemonData}
             onDelete={() => deletePokemon(pokemonData.id)}
+            onShiny={() => toggleShiny(pokemonData.id)}
           />
         ))}
       </div>
