@@ -63,7 +63,10 @@ function App() {
       </form>
       <div className="list">
         {pokemonList.map((pokemonData) => (
-          <PokemonCard {...pokemonData} />
+          <PokemonCard
+            {...pokemonData}
+            onDelete={() => deletePokemon(pokemonData.id)}
+          />
         ))}
       </div>
     </div>
